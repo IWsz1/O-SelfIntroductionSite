@@ -1,0 +1,195 @@
+/* カルーセル全体の設定 */
+.carousel{
+  width: 602px;
+  margin: 16px auto;
+}
+/* スライドの設定 */
+.slide{
+  width: 100%;
+  height: 406px;
+  /* オーバーしてる物を消す */
+  overflow: hidden;
+  border-radius: 2%;
+  /* ポジションabsoluteで親要素から配置指定するために記述 */
+  position: relative;
+  cursor: pointer;
+}
+.slide ul{
+  list-style: none;
+  margin: 0px;
+  padding: 0px;
+  width: 100%;
+  height: 100%;
+  /* スライドの横並び */
+  display: flex;
+  /* スライド移動の移動速度 */
+  transition: 0.3s;
+}
+.slide ul li{
+  width: 100%;
+  height: 100%;
+  /* 要素の最小幅 */
+  min-width: 100%;
+}
+.slide ul li img{
+  width: 100%;
+  height: 100%;
+  /* 写真を幅に無理に合わせず元の縦横比率 */
+  object-fit: cover;
+}
+#prev{
+  /* 親要素がstatic（移動なしだと）左上からの指定、親要素がstatic以外だと移動してなくても親要素の左上からの指定 */
+  position: absolute;
+  /* topから半分下げるだけだから横ボタンの上が全体の半分の位置に来てしまう */
+  top: 50%;
+  /* 上の問題を解決するため横ボタンの半分の高さをY軸方向に移動させる */
+  transform: translateY(-50%);
+  left: 0px;
+  border: none;
+  font-size: 20px;
+  /* カーソルの形状変え */
+  cursor: pointer;
+}
+#next{
+  position: absolute;
+  /* topから半分下げるだけだから横ボタンの上が全体の半分の位置に来てしまう */
+  top: 50%;
+  /* 上の問題を解決するため横ボタンの50%の高さをY軸方向に移動させる */
+  transform: translateY(-50%);
+  right: 0px;
+  border: none;
+  font-size: 20px;
+  /* カーソルの形状変え */
+  cursor: pointer;
+}
+/* 横ボタンの上をカーソルが通ったら */
+#prev:hover,#next:hover{
+  /* ボタンを薄く */
+  opacity: 0.5;
+}
+/* jsでページの１番前か後ろに行ったら横ボタンを消す */
+.off{
+  display: none;
+}
+/* 円ボタンの位置を設定 */
+.sirclebutton{
+  margin-top: 16px;
+  text-align: center;
+}
+/* 円ボタンの設定 */
+.sirclebutton button{
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background-color: #ddd;
+  border: none;
+  cursor: pointer;
+}
+/* buttonの直後にあるbutton */
+.sirclebutton button + button{
+  margin-left:8px ;
+}
+/* 円ボタンが押されたら黒く */
+.sirclebutton .current{
+  background-color: #999;
+}
+
+
+main{
+  /* 背景色 (赤,緑,青,透明度)色は２５５まで透明度は最大値１*/
+  background-color: rgb(210, 210, 210);
+  /* 枠線の太さ、スタイル、色 */
+  border: 4px solid gray;
+  /* 枠線の角に丸みをつかせる */
+  border-radius: 8px;
+  /* 枠の中の余白 */
+  padding: 10px;
+  /* 枠の外の余白 */
+  margin: 16px auto 0px;
+  /* 文字置く左右　右揃え */
+  text-align: justify;
+}
+.otherpage{
+  /* 行間に余裕 */
+  line-height: 1.8;
+}
+/* 名前 */
+h1{
+  font-size: 30px;
+  padding-left: 7px;
+}
+/* 目次
+/* nav{
+  枠線囲みデザインは外枠と同じ
+  border:inherit;
+} */
+/* 目次中身 */
+/* #innav{
+font-size: 17px; */
+/* 文字＋文字上下の幅 数値は１が文字幅２で２倍 */
+/* line-height: 1.8;
+}  */
+/* ランキングに背景つける */
+.rankinga,.rankingb,.rankingc{
+  background-color: rgb(185, 255, 168);
+  width: 320px;
+  height: 200px;
+  text-align: center;
+  /* 影　右、下、ぼかし、色 */
+  box-shadow: 18px 15px 3px rgba(0,0,0,0.3);
+  /* 丸み */
+  border-radius: 25%;
+  /* 丸くなるのにかかる時間 */
+  transition: 1.5s;
+}
+.rankinga.active,.rankingb.active,.rankingc.active{
+  background-color: rgb(185, 255, 168);
+  width: 320px;
+  height: 200px;
+  text-align: center;
+  /* 影　右、下、ぼかし、色 */
+  box-shadow: 18px 15px 3px rgba(0,0,0,0.3);
+  /* 丸み */
+  border-radius: 0%;
+}
+/* ランキングタイトル */
+.rankinga,.rankingb,.rankingc,.rankinga.active,.rankingb.active,.rankingc.active h2{
+  /* 文字ボカシ */
+  text-shadow: 5px 2px 3px rgba(0,0,0,0.3);
+}
+/* 左列ランキングの配置 */
+.rankinga,.rankinga.active{
+  position: relative;
+  left: 30px;
+  top: 20px;
+}
+/* 右列ランキングの配置 */
+.rankingb,.rankingb.active{
+  position: relative;
+  left: 400px;
+  bottom: 175px;
+}
+/* 最下層のランキングの配置 */
+.rankingc,.rankingc.active{
+  position: relative;
+  left: 40px;
+  bottom: 40px;
+}
+/* ランキング内リンク */
+ol a{
+  /* アンダーライン消去 */
+  text-decoration: none;
+}
+/* 先頭へ戻る */
+#return{
+  /* 画面に固定配置 */
+  position: fixed;
+  bottom: 18px;
+  right: 20px;
+}
+
+footer{
+  /* 文字置く左右 */
+  text-align: right;
+  font-size: 15px;
+}
